@@ -1,0 +1,17 @@
+{
+  "name": "api.minerva-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": ["api.minerva"],
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "options": {
+        "jestConfig": "api.minerva-e2e/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "dependsOn": ["api.minerva:build", "api.minerva:serve"]
+    }
+  }
+}
