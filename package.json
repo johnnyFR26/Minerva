@@ -2,7 +2,12 @@
   "name": "@minerva/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:api": "npx nx serve api.minerva",
+    "dev:web": "npx nx serve Minerva",
+    "prisma:studio": "npx prisma studio",
+    "postinstall": "npx prisma generate --schema=api.minerva/prisma/schema.prisma"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "~20.0.0",
