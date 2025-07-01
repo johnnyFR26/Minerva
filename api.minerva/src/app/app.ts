@@ -2,6 +2,7 @@ import * as path from 'path';
 import { FastifyInstance } from 'fastify';
 import AutoLoad from '@fastify/autoload';
 import main from './routes/root';
+import UserRoutes from './routes/user.routes';
 
 /* eslint-disable-next-line */
 export interface AppOptions {}
@@ -22,4 +23,5 @@ export async function app(fastify: FastifyInstance, opts: AppOptions) {
   // This loads all plugins defined in routes
   // define your routes in one of these
   fastify.register(main);
+  fastify.register(UserRoutes);
 }
