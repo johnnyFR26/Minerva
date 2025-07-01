@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/index.js": {
-      "runtime": "nodejs22.x"
+      "runtime": "node22.x"
     }
   },
   "routes": [
