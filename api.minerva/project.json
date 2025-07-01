@@ -16,7 +16,7 @@
         "bundle": false,
         "main": "api.minerva/src/main.ts",
         "tsConfig": "api.minerva/tsconfig.app.json",
-        "assets": ["api.minerva/src/assets"],
+        "assets": ["api.minerva/src/assets", "api.minerva/src/app"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
