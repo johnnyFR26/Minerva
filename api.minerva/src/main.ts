@@ -1,12 +1,12 @@
 import 'dotenv/config';
 import Fastify from 'fastify';
-import { app } from './app/app';
+import { registerRoutes } from './app/routes';
 
 const server = Fastify({
   logger: true,
 });
 
-server.register(app);
+registerRoutes(server);
 
 if (require.main === module) {
   const host = process.env.HOST ?? 'localhost';
