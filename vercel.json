@@ -1,0 +1,35 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "builds": [
+    {
+      "src": "api.minerva/src/main.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "apps/Minerva/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/apps/Minerva/browser"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api.minerva/src/main.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/apps/Minerva/browser/$1"
+    }
+  ]
+}
