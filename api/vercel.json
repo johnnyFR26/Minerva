@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.ts",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": ["**/*.prisma", "prisma/**", "dev.db"]
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "index.ts"
+      }
+    ],
+    "buildCommand": "npm run build"
+  }
+  
