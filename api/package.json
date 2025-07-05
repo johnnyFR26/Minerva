@@ -6,7 +6,7 @@
     "start": "npx tsx index.ts",
     "dev": "npx tsx --watch index.ts",
     "prisma:studio": "npx prisma studio",
-    "postinstall": "npx prisma generate",
+    "prisma:generate": "npx prisma generate",
     "build": "npx prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
