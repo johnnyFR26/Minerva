@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:api": "npx tsx --watch api.minerva/src/main.ts",
+    "dev:api": "npx tsx --watch api/index.ts",
     "dev:web": "npx nx serve Minerva",
     "prisma:studio": "npx prisma studio --schema=api.minerva/prisma/schema.prisma",
     "prisma:generate": "npx prisma generate --schema=api/prisma/schema.prisma",
