@@ -8,8 +8,7 @@
     "prisma:studio": "npx prisma studio --schema=api.minerva/prisma/schema.prisma",
     "prisma:generate": "npx prisma generate --schema=api/prisma/schema.prisma",
     "e2e:web": "npx nx e2e Minerva-e2e",
-    "e2e:api": "npx nx e2e api.minerva-e2e",
-    "postinstall": "npx prisma generate --schema=api/prisma/schema.prisma"
+    "e2e:api": "npx nx e2e api.minerva-e2e"
   },
   "private": true,
   "dependencies": {
