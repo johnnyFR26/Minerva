@@ -5,7 +5,7 @@
   "scripts": {
     "dev:api": "npx tsx --watch api/index.ts",
     "dev:web": "npx nx serve Minerva",
-    "prisma:studio": "npx prisma studio --schema=api.minerva/prisma/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema=api/prisma/schema.prisma",
     "prisma:generate": "npx prisma generate --schema=api/prisma/schema.prisma",
     "e2e:web": "npx nx e2e Minerva-e2e",
     "e2e:api": "npx nx e2e api.minerva-e2e"

@@ -4,7 +4,7 @@ export interface User {
     email: string;
     password: string;
     role: string;
-    controls: string;
-    createdAt: Date;
-    updatedAt: Date;
+    controls?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
