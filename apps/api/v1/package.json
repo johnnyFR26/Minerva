@@ -8,6 +8,7 @@
     "prisma:studio": "npx prisma studio",
     "prisma:generate": "npx prisma generate",
     "build": "npx prisma generate",
+    "postinstall": "npx prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
