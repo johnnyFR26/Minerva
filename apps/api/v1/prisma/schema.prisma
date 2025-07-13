@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role
+  controls  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  teacherProfile TeacherProfile?
+  studentProfile StudentProfile?
+}
+
+model TeacherProfile {
+  id          String @id @default(uuid())
+  departament String
+  controls    Json?
+  exams       Exam?
+  userId      Int    @unique
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model StudentProfile {
+  id       String        @id @default(uuid())
+  grade    String
+  controls Json?
+  exams    AssignedExam?
+  userId   Int           @unique
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Exam {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  createdAt   DateTime @default(now())
+  createdById String   @unique
+
+  createdBy TeacherProfile @relation(fields: [createdById], references: [id])
+
+  questions Question[]
+
+  assignedExams AssignedExam[]
+}
+
+model Question {
+  id      Int          @id @default(autoincrement())
+  examId  Int
+  type    QuestionType
+  text    String
+  options Option[]
+
+  answers Answer?
+
+  exam Exam @relation(fields: [examId], references: [id])
+}
+
+model Option {
+  id         Int     @id @default(autoincrement())
+  questionId Int
+  text       String
+  isCorrect  Boolean
+
+  selecteds Answer?
+
+  question Question @relation(fields: [questionId], references: [id])
+}
+
+model AssignedExam {
+  id         Int      @id @default(autoincrement())
+  examId     Int
+  studentId  String   @unique
+  assignedAt DateTime @default(now())
+
+  questionOrder Json
+
+  answers Answer[]
+
+  exam    Exam           @relation(fields: [examId], references: [id])
+  student StudentProfile @relation(fields: [studentId], references: [id])
+}
+
+model Answer {
+  id               Int     @id @default(autoincrement())
+  assignedExamId   Int
+  questionId       Int     @unique
+  essayAnswer      String?
+  selectedOptionId Int?    @unique
+
+  assignedExam   AssignedExam @relation(fields: [assignedExamId], references: [id])
+  question       Question     @relation(fields: [questionId], references: [id])
+  selectedOption Option?      @relation(fields: [selectedOptionId], references: [id])
+}
+
+enum Role {
+  TEATCHER
+  STUDENT
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  ESSAY
+}
