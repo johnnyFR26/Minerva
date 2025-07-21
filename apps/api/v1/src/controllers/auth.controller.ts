@@ -1,4 +1,4 @@
-import { bcrypt } from 'bcrypt';
+import  bcrypt from 'bcrypt';
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { db } from "../lib/db";
@@ -30,7 +30,9 @@ export class AuthController {
             })
         }
 
-        if (!await bcrypt.compare(password, user.password)) {
+        const isValidPassword =  await bcrypt.compare(password, user.password)
+
+        if (!isValidPassword) {
             return response.status(400).send({
                 message: "Invalid password"
             })
