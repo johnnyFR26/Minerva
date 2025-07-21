@@ -73,20 +73,20 @@ export default function MinervaLanding() {
 
   const testimonials = [
     {
-      name: "Prof. Ana Silva",
+      name: "Prof. Ademir Fernandes",
       role: "Professora de Matemática",
       content: "A Minerva revolucionou minha forma de ensinar. Consigo criar provas personalizadas em minutos!",
       rating: 5,
     },
     {
-      name: "Dr. Carlos Santos",
+      name: "Dr. Thiago Silva",
       role: "Coordenador Pedagógico",
       content:
         "O controle de notas nunca foi tão simples. Os relatórios me ajudam a identificar dificuldades rapidamente.",
       rating: 5,
     },
     {
-      name: "Profa. Maria Costa",
+      name: "Profa. Patricia Martins",
       role: "Diretora Acadêmica",
       content: "Implementamos a Minerva em toda escola. O resultado foi impressionante no engajamento dos alunos.",
       rating: 5,
