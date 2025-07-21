@@ -20,7 +20,7 @@ export class UserController {
      *
      * @returns The list of users.
      */
-    async getAll(request: FastifyRequest, response: FastifyReply<{Body: User[]}>) {
+    async getAll(request: FastifyRequest, response: FastifyReply) {
         const users = await db.user.findMany()
         return response.status(200).send(users)
     }
