@@ -32,7 +32,7 @@ export class UserController {
      * @param response - The response object that will contain the user data.
      * @returns The user data with a status code of 200. If the user is not found, it will return null.
      */
-    async get(request: FastifyRequest<{Params: { id: number} }>, response: FastifyReply<{Body: User}>) {
+    async get(request: FastifyRequest<{Params: { id: number} }>, response: FastifyReply) {
         const { id } = request.params
 
         const user = await db.user.findUnique({
@@ -53,7 +53,7 @@ export class UserController {
      * @returns The created user data with a status code of 201. If validation fails,
      *     it returns the validation error with a status code of 400.
      */
-    async create(request: FastifyRequest<{Body: z.infer<typeof createUserSchema>}>, response: FastifyReply<{Body: User}>) {
+    async create(request: FastifyRequest<{Body: z.infer<typeof createUserSchema>}>, response: FastifyReply) {
         const validate = createUserSchema.safeParse(request.body)
 
         if (!validate.success) {
