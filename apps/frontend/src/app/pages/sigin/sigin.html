@@ -1,1 +1,59 @@
-<p>sigin works!</p>
+<h3>Realize o seu cadastro</h3>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input [(ngModel)]="name" matInput placeholder="Seu Nome">
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input [(ngModel)]="email" matInput placeholder="minerva@email.com">
+    <mat-icon matSuffix>alternate_email</mat-icon>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input [(ngModel)]="password" [type]="showPassword ? 'password' : 'text'" matInput type="password" placeholder="****">
+    @if(showPassword){
+        <mat-icon (click)="togglePassword()" matSuffix>lock</mat-icon>
+    }
+    @else{
+        <mat-icon (click)="togglePassword()" matSuffix>lock_open</mat-icon>
+    }
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Confirme a senha</mat-label>
+    <input [(ngModel)]="confirmPassword" [type]="showPassword ? 'password' : 'text'" matInput type="password" placeholder="****">
+    @if(showPassword){
+        <mat-icon (click)="togglePassword()" matSuffix>lock</mat-icon>
+    }
+    @else{
+        <mat-icon (click)="togglePassword()" matSuffix>lock_open</mat-icon>
+    }
+  </mat-form-field>
+</p>
+
+@if(!isPasswordValid()){
+    <span>As senhas devem ser iguais</span>
+}
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Selecione o cargo</mat-label>
+    <mat-select [(ngModel)]="role">
+      <mat-option value="TEATCHER">Professor</mat-option>
+      <mat-option value="STUDENT">Aluno</mat-option>
+    </mat-select>
+  </mat-form-field>
+</p>
+
+<p>
+  <button [disabled]="!isFormValid()" (click)="onSubmit()" mat-raised-button color="primary">Entrar  
+    <mat-icon>arrow_forward</mat-icon></button>
+</p>

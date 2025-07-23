@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { storageUser } from '../types/storageUser';
 import { Observable } from 'rxjs';
+import { CreateUser } from '../types/createUser';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,23 @@ export class User {
         const storedUser = localStorage.getItem('UserData')
         return storedUser ? JSON.parse(storedUser) : null
     }
+
+   createUserObserVable(user: CreateUser){
+        return this.http.post(`${this.urlApi}/users`, user).subscribe({
+            next: (response: any) => {
+                console.log('Response:', response)
+
+                if(!response){
+                    return console.log("DEU MERDA", response)
+                }else{
+                    this.router.navigateByUrl('/login')
+                    console.log("DEU CERTO")
+                }
+            },
+            error: (error: any) => {
+                console.log('Error:', error)
+            }
+        })
+    } 
 
 }

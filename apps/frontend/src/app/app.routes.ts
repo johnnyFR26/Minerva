@@ -12,7 +12,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/login/login').then((m) => m.Login)
     },
     {
-        path: 'sigin',
+        path: 'signin',
         loadComponent: () => import('./pages/sigin/sigin').then((m) => m.Sigin)
     },
     {
