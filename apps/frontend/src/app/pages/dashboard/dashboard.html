@@ -1,1 +1,63 @@
-<p>dashboard works!</p>
+<mat-toolbar color="primary" class="dashboard-toolbar">
+  <span>Dashboard</span>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>notifications</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="dashboard-container">
+  <div class="stats">
+    @for (stat of status; track $index) {
+        <mat-card>
+          <div class="stat-label">{{ stat.label }}</div>
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-change">{{ stat.change }} vs mês anterior</div>
+        </mat-card>
+    }
+  </div>
+
+  <div class="dashboard-columns">
+    <mat-card class="recent-tests">
+      <div class="card-header">
+        <h3>Provas Recentes</h3>
+        <button mat-flat-button color="primary">+ Nova Prova</button>
+      </div>
+      <mat-list>
+        @for (prova of provas; track $index) {
+            <mat-list-item>
+              <div mat-line>{{ prova.titulo }}</div>
+              <div mat-line class="secondary">{{ prova.turma }} - {{ prova.alunos }}</div>
+              <span class="status-chip" [class]="prova.status.toLowerCase()">{{ prova.status }}</span>
+            </mat-list-item>
+        }
+      </mat-list>
+    </mat-card>
+
+    <mat-card class="minhas-turmas">
+      <div class="card-header">
+        <h3>Minhas Turmas</h3>
+        <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
+      <mat-list>
+        @for (turma of turmas; track $index) {            
+            <mat-list-item>
+              <mat-icon matListIcon [color]="turma.cor">circle</mat-icon>
+              <div mat-line>{{ turma.nome }} - {{ turma.disciplina }}</div>
+              <div mat-line class="secondary">{{ turma.alunos }} alunos · Média: {{ turma.media }}</div>
+            </mat-list-item>
+        }
+      </mat-list>
+    </mat-card>
+  </div>
+
+  <mat-card class="performance">
+    <h3>Performance das Turmas</h3>
+    <div *ngFor="let turma of turmas">
+      <div class="performance-label">{{ turma.nome }}</div>
+      <mat-progress-bar mode="determinate" [value]="turma.media * 10"></mat-progress-bar>
+    </div>
+  </mat-card>
+</div>
