@@ -1,26 +1,30 @@
 <h3>Acessar Minerva</h3>
 
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input [(ngModel)]="email" matInput placeholder="minerva@email.com">
-    <mat-icon matSuffix>alternate_email</mat-icon>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Senha</mat-label>
-    <input [(ngModel)]="password" [type]="showPassword ? 'password' : 'text'" matInput type="password" placeholder="****">
-    @if(showPassword){
-        <mat-icon (click)="togglePassword()" matSuffix>lock</mat-icon>
-    }
-    @else{
-        <mat-icon (click)="togglePassword()" matSuffix>lock_open</mat-icon>
-    }
-  </mat-form-field>
-</p>
-
-<p>
-  <button [disabled]="!isFormValid()" (click)="onSubmit()" mat-raised-button color="primary">Entrar  
-    <mat-icon>arrow_forward</mat-icon></button>
-</p>
+<form name="loginForm" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input name="email" [(ngModel)]="email" matInput placeholder="minerva@email.com">
+      <mat-icon matSuffix>alternate_email</mat-icon>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input name="password" [(ngModel)]="password" [type]="showPassword ? 'password' : 'text'" matInput type="password" placeholder="****">
+      @if(showPassword){
+          <mat-icon (click)="togglePassword()" matSuffix>lock</mat-icon>
+      }
+      @else{
+          <mat-icon (click)="togglePassword()" matSuffix>lock_open</mat-icon>
+      }
+    </mat-form-field>
+  </p>
+  
+  <a href="/signin">Não tenho cadastro</a>
+  
+  <p>
+    <button type="submit" [disabled]="!isFormValid()" (click)="onSubmit()" mat-raised-button color="primary">Entrar  
+      <mat-icon>arrow_forward</mat-icon></button>
+  </p>
+</form>

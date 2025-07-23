@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { EMAIL_REGEXP } from '../../utils/email-validator';
 import { User } from '@services/user';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '@components/snackbar/snackbar';
 
 @Component({
   selector: 'app-login',
@@ -36,6 +38,17 @@ export class Login {
     return this.email().length > 0 && this.password().length > 0 && EMAIL_REGEXP.test(this.email());
   });
 
+  private _snackBar = inject(MatSnackBar);
+
+  durationInSeconds = 5;
+
+  openSnackBar(message: string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: {message},
+    });
+  }
+
   onSubmit() {
     console.log(this.formValue())
 
@@ -46,7 +59,7 @@ export class Login {
       },
       error: (err) => {
         console.log(err)
-        alert(err.error.message)
+        this.openSnackBar(err.error.message)
       }
     })
   }

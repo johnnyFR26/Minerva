@@ -32,7 +32,7 @@ export class Sigin {
   }
 
     public isPasswordValid = computed(() => {
-    return this.password().length > 0 && this.password() === this.confirmPassword();
+    return this.password() === this.confirmPassword();
   })
 
   public formValue = computed(() => {
