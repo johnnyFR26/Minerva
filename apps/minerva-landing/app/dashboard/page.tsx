@@ -228,24 +228,26 @@ export default function Dashboard() {
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? "dark" : ""}`}>
       <SidebarProvider>
         <Sidebar className="border-r border-gray-200 dark:border-gray-700">
-          <SidebarHeader className="border-b border-gray-200 dark:border-gray-700 p-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-[#00BFFF] rounded-lg flex items-center justify-center">
-                <div className="w-6 h-6 bg-white rounded-full relative">
-                  <div className="absolute top-1 left-1.5 w-1 h-1 bg-[#00BFFF] rounded-full"></div>
-                  <div className="absolute top-1 right-1.5 w-1 h-1 bg-[#00BFFF] rounded-full"></div>
-                  <div className="absolute top-3 left-2 w-2 h-1 bg-[#00BFFF] rounded-full"></div>
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-[#00BFFF] rounded-t-full"></div>
-                </div>
-              </div>
-              <span
-                className="text-xl font-bold text-gray-900 dark:text-white"
-                style={{ fontFamily: "Lexend, sans-serif" }}
-              >
-                Minerva
-              </span>
-            </div>
-          </SidebarHeader>
+         <SidebarHeader className="border-b border-gray-200 dark:border-gray-700 p-6">
+  <div className="flex items-center space-x-3">
+    <div className="w-10 h-10 relative">
+      <Image
+        src="/Minerva_brandmark_principal_azul_v1.svg"
+        alt="Minerva Logo"
+        width={40}
+        height={40}
+        className="rounded-lg"
+        priority
+      />
+    </div>
+    <span
+      className="text-xl font-bold text-gray-900 dark:text-white"
+      style={{ fontFamily: "Lexend, sans-serif" }}
+    >
+      Minerva
+    </span>
+  </div>
+</SidebarHeader>
 
           <SidebarContent>
             <SidebarGroup>
