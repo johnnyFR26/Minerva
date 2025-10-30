@@ -63,6 +63,7 @@ import {
   Home,
 } from "lucide-react"
 import { motion } from "framer-motion"
+import { Image } from "next/image"
 
 export default function Dashboard() {
   const [isDark, setIsDark] = useState(false)
